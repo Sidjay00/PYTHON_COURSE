@@ -69,8 +69,14 @@
 """
 
 def greeting(hello):
-    
+    def our_greeting(func):
+        def decorator():
+            name = func()
+            print(f'{hello} {name}!')
+        return decorator
+    return our_greeting
 
+@greeting('Привет,')
 def get_name():
     return input('Как тебя зовут? \n')
 
